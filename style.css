@@ -1,0 +1,181 @@
+/* Modal de avaria responsivo */
+@media (max-width: 600px) {
+  .modal-avaria-content {
+    max-width: 98vw !important;
+    padding: 12px 2vw !important;
+    border-radius: 10px !important;
+    font-size: 0.98rem !important;
+  }
+  #modalAvaria {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding-top: 12vw !important;
+  }
+  #modalAvaria form label,
+  #modalAvaria form input,
+  #modalAvaria form textarea {
+    font-size: 1rem !important;
+  }
+}
+/* Responsivo para telas menores */
+@media (max-width: 900px) {
+  .logo {
+    width: 320px;
+  }
+  .center-box {
+    max-width: 98vw;
+    padding: 28px 8vw;
+  }
+  .btns-container {
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+  }
+  .main-btn .btn-icon {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo {
+    width: 180px;
+  }
+  .center-content {
+    padding: 0 2vw;
+  }
+  .center-box {
+    padding: 18px 2vw;
+    font-size: 0.98rem;
+  }
+  .main-btn {
+    font-size: 1rem;
+    padding: 14px 10vw;
+  }
+  .main-btn .btn-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .logo-container {
+    margin-bottom: 18px;
+  }
+  .avaria-btns {
+    gap: 12px;
+  }
+  .back-btn {
+    padding: 10px 18vw;
+    font-size: 1rem;
+  }
+}
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+.index-bg {
+    background: url('https://i.ibb.co/nqCjL4tV/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+.center-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.page-bg {
+    background: url('https://i.ibb.co/nqCjL4tV/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-container {
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: center;
+}
+.logo {
+    width: 580px;
+    height: auto;
+}
+.btns-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+.main-btn {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    padding: 20px 40px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: 500;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    position: relative;
+    cursor: pointer;
+}
+.main-btn:hover {
+    background: #f79605;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    transform: translateY(-3px) scale(1.04);
+}
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 18px;
+    object-fit: contain;
+}
+
+/* Ajuste específico para o ícone do botão */
+.main-btn .btn-icon {
+    width: 88px;
+    height: 88px;
+    margin-right: 4px;
+    object-fit: contain;
+}
+.center-box {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    padding: 40px 32px;
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avaria-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.avaria-info {
+    width: 100%;
+    margin-bottom: 18px;
+    text-align: left;
+    display: none;
+}
+.back-btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 32px;
+    background: #e0e7ff;
+    color: #333;
+    border-radius: 16px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s, transform 0.2s;
+}
+.back-btn:hover {
+    background: #f0a505;
+    transform: scale(1.05);
+}

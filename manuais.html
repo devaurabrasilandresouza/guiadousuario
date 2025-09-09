@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://i.ibb.co/PsKwZBhd/GUIA-DO-USU-RIO.png">
+    <title>Manuais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-bg">
+    <div id="user-bar" style="width:100%;background:#f8f9fa;border-bottom:1px solid #e0e7ff;padding:8px 0 6px 0;position:fixed;top:0;left:0;z-index:1000;text-align:right;font-size:1.01rem;color:#555;">
+        <span id="user-info">Usuário: <span id="userName">-</span></span>
+    </div>
+    <div class="center-box">
+        <h2>Manuais</h2>
+        <p>Selecione o tipo e modelo para baixar o manual correspondente.</p>
+        <div style="display:flex; flex-direction:column; gap:18px; align-items:center; width:100%; max-width:400px; margin:auto;">
+            <label for="tipo">Tipo:</label>
+            <select id="tipo" onchange="updateModelos()" style="width:100%; padding:8px; border-radius:8px;">
+                <option value="">Selecione o tipo</option>
+                <option value="telescopia">Lança Telescopia</option>
+                <option value="articulada">Plataforma Articulada</option>
+                <option value="tesoura">Tesoura/Pantográfica</option>
+                <option value="mastro">Mastro Vertical</option>
+                <option value="manipulador">Manipulador</option>
+                <option value="torre">Torre de Iluminação</option>
+            </select>
+            <label for="modelo">Modelo:</label>
+            <select id="modelo" disabled style="width:100%; padding:8px; border-radius:8px;"></select>
+            <button id="downloadBtn" class="main-btn" style="display:none; margin-top:16px;" onclick="baixarManual()">Baixar Manual</button>
+        </div>
+        <a href="paginainicial.html" class="back-btn" style="margin-top:32px;">Voltar</a>
+    </div>
+    <script src="script.js"></script>
+</body>
+        <script src="assets/userbar.js"></script>
+</html>

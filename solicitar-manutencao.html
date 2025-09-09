@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitar Manutenção</title>
+  <link rel="icon" type="image/png" href="https://i.ibb.co/PsKwZBhd/GUIA-DO-USU-RIO.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-bg">
+  <div id="user-bar" style="width:100%;background:#f8f9fa;border-bottom:1px solid #e0e7ff;padding:8px 0 6px 0;position:fixed;top:0;left:0;z-index:1000;text-align:right;font-size:1.01rem;color:#555;">
+    <span id="user-info">Usuário: <span id="userName">-</span></span>
+  </div>
+  <div class="center-box">
+    <h2 style="color:#f79605; margin-bottom:4px; font-size:1.18rem;">Solicitar Manutenção</h2>
+    <p style="color:#555; font-size:0.93rem; margin-bottom:10px; text-align:center;"> Iremos te retornar o mais rapido possivel.</p>
+    <form
+  name="avaria"
+  method="POST"
+  data-netlify="true"
+  enctype="multipart/form-data"
+  id="netlifyAvaria"
+  style="width:100%; max-width:3000px; min-width:160px; display:flex; flex-direction:column; gap:8px; align-items:center; background:#f8f9fa; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,0.10); padding:6px 1px; box-sizing:border-box;"
+    >
+      <input type="hidden" name="form-name" value="avaria">
+      <!-- Dados pessoais -->
+      <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+        Nome:
+        <input type="text" name="nome" required style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+      </label>
+      <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+        Email:
+        <input type="email" name="email" required style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+      </label>
+      <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+        Telefone (com DDD):
+        <input type="tel" name="telefone" required pattern="^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$" maxlength="15" placeholder="(11) 91234-5678" style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;" title="Digite um número válido com DDD, ex: (11) 91234-5678">
+      </label>
+      <!-- Localização automática -->
+      
+        <!-- Endereço manual com preenchimento automático pelo CEP -->
+        <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+          CEP:
+          <input type="text" name="cep" id="campoCep" maxlength="9" pattern="\d{5}-?\d{3}" placeholder="00000-000" required style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+        </label>
+        <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+          Rua:
+          <input type="text" name="rua" id="campoRua" required style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+        </label>
+        <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+          Número:
+          <input type="text" name="numero" id="campoNumero" required style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+        </label>
+        <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+          Bairro:
+          <input type="text" name="bairro" id="campoBairro" required style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+        </label>
+        <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+          Cidade:
+          <input type="text" name="cidade" id="campoCidade" required style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+        </label>
+        <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+          Estado:
+          <input type="text" name="estado" id="campoEstado" required style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+        </label>
+        <div id="statusLocalizacao" style="color:#888; font-size:0.93rem; min-height:18px;"></div>
+      <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+        Local da obra:
+        <input type="text" name="local_obra" required placeholder="Ex: Obra Centro, SP" style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+      </label>
+      <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+        Tipo de máquina:
+        <select name="tipo_maquina" id="tipoMaquina" required style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+          <option value="">Selecione o tipo</option>
+          <option value="telescopia">Lança Telescopia</option>
+          <option value="articulada">Plataforma Articulada</option>
+          <option value="tesoura">Tesoura/Pantográfica</option>
+          <option value="mastro">Mastro Vertical</option>
+          <option value="manipulador">Manipulador</option>
+          <option value="torre">Torre de Iluminação</option>
+        </select>
+      </label>
+      <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+        Modelo:
+        <select name="modelo_maquina" id="modeloMaquina" required disabled style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+          <option value="">Selecione o modelo</option>
+        </select>
+      </label>
+      <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+        Número de série:
+        <input type="text" name="numero_serie" required placeholder="Ex: 300123456" style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; box-sizing:border-box;">
+      </label>
+      <!-- Observação -->
+      <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+        Observação:
+        <textarea name="descricao" required rows="3" style="width:100%; max-width:100%; min-width:0; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px; resize:vertical; box-sizing:border-box;"></textarea>
+      </label>
+      <!-- Fotos -->
+      <label style="width:100%; text-align:left; color:#555; font-size:0.97rem; margin-bottom:4px;">
+        Fotos do problema:
+        <label for="uploadInput" style="display:flex; align-items:center; gap:7px; cursor:pointer; margin-top:2px;">
+          <span style="display:inline-block; width:38px; height:38px; background:#e0e7ff; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+            <svg width="24" height="24" fill="#555" viewBox="0 0 24 24"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm-7-2v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2h-1.17a3.001 3.001 0 0 0-5.66 0H5a2 2 0 0 0-2 2zm7-13a7 7 0 1 1 0 14 7 7 0 0 1 0-14z"/></svg>
+          </span>
+          <span style="color:#555; font-size:1rem;">Enviar foto(s)</span>
+          <input id="uploadInput" type="file" name="upload" multiple required accept="image/*" style="display:none; max-width:100%; min-width:0; box-sizing:border-box;">
+        </label>
+      </label>
+      <div id="previewContainer" style="width:100%; display:flex; flex-wrap:wrap; gap:6px; margin-bottom:4px; justify-content:flex-start;"></div>
+      <div id="photoCount" style="width:100%; color:#555; font-size:0.97rem; margin-bottom:6px; text-align:left;"></div>
+      <button type="submit" class="main-btn" style="background:#2ecc40; color:#fff; margin-top:8px; font-size:1.07rem; padding:10px 0; border-radius:7px; box-shadow:0 2px 8px rgba(46,204,64,0.10); width:100%; max-width:170px; text-align:center; display:flex; align-items:center; justify-content:center;">Enviar</button>
+      <style>
+      @media (max-width: 600px) {
+        #netlifyAvaria {
+          max-width: 96vw !important;
+          min-width: 0 !important;
+          padding: 2vw 2vw !important;
+          border-radius: 7px !important;
+          font-size: 0.97rem !important;
+          box-sizing: border-box !important;
+        }
+        #netlifyAvaria label,
+        #netlifyAvaria input,
+        #netlifyAvaria textarea {
+          font-size: 0.95rem !important;
+          box-sizing: border-box !important;
+          width: 100% !important;
+          min-width: 0 !important;
+          max-width: 100% !important;
+        }
+        #previewContainer img {
+          max-width: 48px !important;
+          max-height: 48px !important;
+        }
+        #netlifyAvaria button {
+          font-size: 1rem !important;
+          padding: 8px 0 !important;
+          max-width: 98vw !important;
+        }
+      }
+      </style>
+    </form>
+    <div id="avariaSuccess" style="display:none; color:#2ecc40; font-size:1.1rem; margin-top:12px; text-align:center;">Enviado com sucesso!</div>
+    <a href="paginainicial.html" class="back-btn">Voltar</a>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    // Localização GPS com alta precisão e endereço montado manualmente, campo editável
+    (function() {
+      var campoEndereco = document.getElementById('campoEndereco');
+      var campoLat = document.getElementById('campoLatitude');
+      var campoLng = document.getElementById('campoLongitude');
+      var statusLoc = document.getElementById('statusLocalizacao');
+
+      function montarEndereco(address) {
+        return [
+          address.road || '',
+          address.house_number || '',
+          address.suburb || '',
+          address.city || address.town || address.village || '',
+          address.state || '',
+          address.postcode || '',
+          address.country || ''
+        ].filter(Boolean).join(', ');
+      }
+
+      function obterLocalizacao() {
+        if (navigator.geolocation) {
+          statusLoc.textContent = 'Obtendo localização...';
+          navigator.geolocation.getCurrentPosition(function(pos) {
+            var lat = pos.coords.latitude;
+            var lng = pos.coords.longitude;
+            campoLat.value = lat;
+            campoLng.value = lng;
+            statusLoc.textContent = 'Localização obtida! Buscando endereço...';
+            // Usando LocationIQ
+            fetch(`https://us1.locationiq.com/v1/reverse?key=pk.ba8ad4ff277d80d4af5da6580ee4dd68&lat=${lat}&lon=${lng}&format=json`)
+              .then(resp => resp.json())
+              .then(data => {
+                if (data && data.address) {
+                  campoEndereco.value = montarEndereco(data.address);
+                  statusLoc.textContent = 'Endereço preenchido automaticamente. Edite se necessário.';
+                } else {
+                  campoEndereco.value = '';
+                  statusLoc.textContent = 'Endereço não encontrado. Preencha manualmente.';
+                }
+              })
+              .catch(() => {
+                campoEndereco.value = '';
+                statusLoc.textContent = 'Erro ao buscar endereço. Preencha manualmente.';
+              });
+          }, function(erro) {
+            statusLoc.textContent = 'Não foi possível obter a localização.';
+            campoLat.value = '';
+            campoLng.value = '';
+            campoEndereco.value = '';
+          }, {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+          });
+        } else {
+          statusLoc.textContent = 'Seu navegador não suporta geolocalização.';
+          campoLat.value = '';
+          campoLng.value = '';
+          campoEndereco.value = '';
+        }
+      }
+        //obterLocalizacao();
+    })();
+      // Preenchimento automático de endereço pelo CEP usando LocationIQ
+      (function() {
+        var campoCep = document.getElementById('campoCep');
+        var campoRua = document.getElementById('campoRua');
+        var campoBairro = document.getElementById('campoBairro');
+        var campoCidade = document.getElementById('campoCidade');
+        var campoEstado = document.getElementById('campoEstado');
+        var statusLoc = document.getElementById('statusLocalizacao');
+
+        campoCep.addEventListener('blur', function() {
+          var cep = campoCep.value.replace(/\D/g, '');
+          if (cep.length === 8) {
+            statusLoc.textContent = 'Buscando endereço pelo CEP...';
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+              .then(resp => resp.json())
+              .then(data => {
+                if (!data.erro) {
+                  campoRua.value = data.logradouro || '';
+                  campoBairro.value = data.bairro || '';
+                  campoCidade.value = data.localidade || '';
+                  campoEstado.value = data.uf || '';
+                  statusLoc.textContent = '';
+                } else {
+                  statusLoc.textContent = 'Endereço não encontrado para este CEP.';
+                  campoRua.value = '';
+                  campoBairro.value = '';
+                  campoCidade.value = '';
+                  campoEstado.value = '';
+                }
+              })
+              .catch(() => {
+                statusLoc.textContent = 'Erro ao buscar endereço. Preencha manualmente.';
+                campoRua.value = '';
+                campoBairro.value = '';
+                campoCidade.value = '';
+                campoEstado.value = '';
+              });
+          }
+        });
+      })();
+  // Preview de múltiplas fotos e contador
+    (function() {
+      const uploadInput = document.getElementById('uploadInput');
+      const preview = document.getElementById('previewContainer');
+      const photoCount = document.getElementById('photoCount');
+      let previewFiles = [];
+    // Intercepta envio do formulário Netlify e mostra mensagem na própria página
+    document.getElementById('netlifyAvaria').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      // Garante que o campo form-name está presente
+      if (!formData.has('form-name')) {
+        formData.append('form-name', 'avaria');
+      }
+      // Mostra carregando
+      let loader = document.createElement('div');
+      loader.id = 'formLoader';
+      loader.style.position = 'fixed';
+      loader.style.top = '0';
+      loader.style.left = '0';
+      loader.style.width = '100vw';
+      loader.style.height = '100vh';
+      loader.style.background = 'rgba(255,255,255,0.7)';
+      loader.style.display = 'flex';
+      loader.style.alignItems = 'center';
+      loader.style.justifyContent = 'center';
+      loader.style.zIndex = '99999';
+      loader.innerHTML = '<div style="background:#fff; border-radius:12px; padding:32px 24px; box-shadow:0 2px 16px rgba(0,0,0,0.10); font-size:1.2rem; color:#555;">Enviando solicitação...</div>';
+      document.body.appendChild(loader);
+      fetch('/', {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(response) {
+        document.body.removeChild(loader);
+        if (response.ok) {
+          form.style.display = 'none';
+          document.getElementById('avariaSuccess').style.display = 'block';
+        } else {
+          alert('Falha ao enviar. Tente novamente.');
+        }
+      })
+      .catch(function() {
+        document.body.removeChild(loader);
+        alert('Falha ao enviar. Tente novamente.');
+      });
+    });
+
+      function syncInputFiles() {
+        const dt = new DataTransfer();
+        previewFiles.forEach(f => dt.items.add(f));
+        uploadInput.files = dt.files;
+      }
+
+      function updatePreview() {
+        preview.innerHTML = '';
+        preview.style.display = 'flex';
+        if (photoCount) {
+          photoCount.textContent = previewFiles.length > 0 ? `Fotos selecionadas: ${previewFiles.length}` : 'Nenhuma foto selecionada.';
+        }
+        if (previewFiles.length === 0) {
+          preview.innerHTML = '<span style="color:#888;font-size:0.95rem;">Nenhuma foto adicionada ainda.</span>';
+          syncInputFiles();
+          return;
+        }
+        previewFiles.forEach(function(file, idx) {
+          var reader = new FileReader();
+          reader.onload = function(ev) {
+            var wrapper = document.createElement('div');
+            wrapper.style.display = 'inline-block';
+            wrapper.style.position = 'relative';
+            wrapper.style.width = '56px';
+            wrapper.style.height = '56px';
+            wrapper.style.marginRight = '8px';
+            wrapper.style.marginBottom = '4px';
+            wrapper.style.border = '1px solid #e0e7ff';
+            wrapper.style.borderRadius = '8px';
+            wrapper.style.overflow = 'hidden';
+            wrapper.style.background = '#f8f9fa';
+            // Imagem
+            var previewImgEl = document.createElement('img');
+            previewImgEl.src = ev.target.result;
+            previewImgEl.style.width = '100%';
+            previewImgEl.style.height = '100%';
+            previewImgEl.style.objectFit = 'cover';
+            previewImgEl.title = 'Clique para remover';
+            previewImgEl.style.cursor = 'pointer';
+            // Botão de remover
+            var removeBtnEl = document.createElement('button');
+            removeBtnEl.textContent = '✖';
+            removeBtnEl.style.position = 'absolute';
+            removeBtnEl.style.right = '2px';
+            removeBtnEl.style.top = '2px';
+            removeBtnEl.style.background = '#fff';
+            removeBtnEl.style.border = '1px solid #ccc';
+            removeBtnEl.style.borderRadius = '50%';
+            removeBtnEl.style.width = '18px';
+            removeBtnEl.style.height = '18px';
+            removeBtnEl.style.fontSize = '0.95rem';
+            removeBtnEl.style.cursor = 'pointer';
+            removeBtnEl.onclick = function(evBtn) {
+              evBtn.preventDefault();
+              previewFiles.splice(idx, 1);
+              syncInputFiles();
+              updatePreview();
+            };
+            wrapper.appendChild(previewImgEl);
+            wrapper.appendChild(removeBtnEl);
+            preview.appendChild(wrapper);
+          };
+          reader.readAsDataURL(file);
+        });
+        syncInputFiles();
+      }
+
+      uploadInput.addEventListener('change', function(e) {
+        previewFiles = Array.from(e.target.files);
+        updatePreview();
+      });
+
+      // Inicializa preview se já houver arquivos
+      updatePreview();
+    })();
+  </script>
+</body>
+  <script src="assets/userbar.js"></script>
+</html>

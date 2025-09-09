@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro enviado</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: url('https://i.ibb.co/nqCjL4tV/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.7s ease;
+    }
+    .fade-out {
+      opacity: 0;
+    }
+    .fade-in {
+      opacity: 1;
+    }
+    .gif-center {
+      width: 900px;
+      height: 900px;
+      max-width: 90vw;
+      max-height: 90vh;
+      min-width: 180px;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      background: none;
+      position: relative;
+    }
+    .gif-center img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+      background: none;
+      border-radius: 20px;
+    }
+    @media (max-width: 600px) {
+      .gif-center {
+        width: 60vw;
+        height: 60vw;
+        max-width: 180px;
+        max-height: 180px;
+        min-width: 80px;
+        min-height: 80px;
+      }
+      .gif-center img {
+        max-width: 180px;
+        max-height: 180px;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.classList.add('fade-in');
+      setTimeout(function() {
+        document.body.classList.add('fade-out');
+        setTimeout(function() {
+          window.location.href = "paginainicial.html";
+        }, 700);
+      }, 2000); // tempo aumentado para 2 segundos
+    });
+  </script>
+</head>
+<body>
+  <div class="gif-center">
+    <img src="https://i.ibb.co/35VmJLSC/efeito-carregar.gif" alt="Carregando...">
+  </div>
+</body>
+</html>

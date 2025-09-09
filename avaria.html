@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avarias Comuns</title>
+  <link rel="icon" type="image/png" href="https://i.ibb.co/PsKwZBhd/GUIA-DO-USU-RIO.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-bg">
+  <div id="user-bar" style="width:100%;background:#f8f9fa;border-bottom:1px solid #e0e7ff;padding:8px 0 6px 0;position:fixed;top:0;left:0;z-index:1000;text-align:right;font-size:1.01rem;color:#555;">
+    <span id="user-info">Usuário: <span id="userName">-</span></span>
+  </div>
+  <div class="center-box">
+    <h2>Avarias Mais Comuns</h2>
+    <p>Selecione uma categoria para visualizar as informações detalhadas:</p>
+    <div class="avaria-btns">
+      <button class="main-btn" onclick="toggleAvaria('estrutural')">🔧 Avarias Estruturais</button>
+      <button class="main-btn" onclick="toggleAvaria('mecanica')">⚙️ Avarias Mecânicas</button>
+      <button class="main-btn" onclick="toggleAvaria('eletrica')">⚡ Avarias Elétricas</button>
+      <button class="main-btn" onclick="toggleAvaria('hidraulica')">💧 Avarias Hidráulicas</button>
+    </div>
+    <div id="estrutural" class="avaria-info">
+      <ul>
+        <li><strong>TAG:</strong> Remoção ou ilegível – <em>Dificulta rastreio</em> (Cliente)</li>
+        <li><strong>Nº de Série / Chassi:</strong> Apagado – <em>Perda de rastreabilidade</em> (Cliente)</li>
+        <li><strong>Frontal / Laterais:</strong> Amassados ou riscos – <em>Batida com obstáculos</em> (Cliente)</li>
+        <li><strong>Piso do Cesto:</strong> Furo ou desgaste – <em>Sobrecarga</em> (Cliente)</li>
+        <li><strong>Pneus / Rodas:</strong> Cortes ou trincas – <em>Curvas bruscas e impactos</em> (Cliente)</li>
+      </ul>
+    </div>
+    <div id="mecanica" class="avaria-info">
+      <ul>
+        <li><strong>Motor:</strong> Baixo nível de óleo – <em>Travamento</em> (Cliente)</li>
+        <li><strong>Ventoinha:</strong> Parada ou ruído – <em>Falta de limpeza</em> (Cliente)</li>
+        <li><strong>Correias:</strong> Folga ou ruptura – <em>Desgaste por uso</em> (Cliente)</li>
+        <li><strong>Cilindros Mecânicos:</strong> Travamento ou ruído – <em>Desgaste</em> (Cliente)</li>
+        <li><strong>Estrutura Mecânica Móvel:</strong> Folgas ou travamentos – <em>Falta de lubrificação</em> (Cliente)</li>
+      </ul>
+    </div>
+    <div id="eletrica" class="avaria-info">
+      <ul>
+        <li><strong>Painel de Comando:</strong> Botões quebrados – <em>Mau uso</em> (Cliente)</li>
+        <li><strong>Joystick:</strong> Inoperante – <em>Falta de capacitação</em> (Cliente)</li>
+        <li><strong>Display:</strong> Quebrado ou sem leitura – <em>Infiltração</em> (Cliente)</li>
+        <li><strong>Bateria:</strong> Vazamento ou oxidação – <em>Sobrecarga ou má recarga</em> (Cliente)</li>
+        <li><strong>Relés e Fusíveis:</strong> Queimados – <em>Picos de corrente</em> (Cliente)</li>
+      </ul>
+    </div>
+    <div id="hidraulica" class="avaria-info">
+      <ul>
+        <li><strong>Mangueiras:</strong> Vazamento ou rachaduras – <em>Pressão ou ressecamento</em> (Cliente)</li>
+        <li><strong>Conexões:</strong> Vazamentos ou folgas – <em>Vibração</em> (Cliente)</li>
+        <li><strong>Hastes de Cilindros:</strong> Vazamento ou empeno – <em>Falta de inspeção</em> (Cliente)</li>
+        <li><strong>Reservatório:</strong> Tampa ausente ou fluido contaminado – <em>Negligência</em> (Cliente)</li>
+        <li><strong>Filtro Hidráulico:</strong> Entupido – <em>Falta de manutenção</em> (Cliente)</li>
+      </ul>
+    </div>
+
+    <p style="margin-top:24px"><strong>Importante:</strong> O cliente é responsável por preservar o equipamento durante o uso. Verificações diárias e operação correta evitam falhas e cobranças contratuais.</p>
+
+  <a href="paginainicial.html" class="main-btn" style="margin-bottom:18px; background:#888; color:#fff; text-align:center; text-decoration:none;">Voltar</a>
+
+  <script src="script.js"></script>
+</body>
+  <script src="assets/userbar.js"></script>
+</html>

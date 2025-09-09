@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia do Usuário</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/PsKwZBhd/GUIA-DO-USU-RIO.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-bg">
+    <div class="center-content">
+        <div class="logo-container">
+            <img src="https://i.ibb.co/PsKwZBhd/GUIA-DO-USU-RIO.png" alt="Logo" class="logo">
+        </div>
+        <div class="center-box" style="max-width:440px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); padding:48px 36px; background:rgba(255,255,255,0.97);">
+            <h2 style="margin-bottom:8px; color:#f79605; font-size:2.1rem; letter-spacing:1px;">Login</h2>
+            <p style="margin-bottom:24px; color:#555; font-size:1.08rem;">Acesse o sistema com seu usuário e senha.</p>
+            <form id="loginForm" style="display:flex; flex-direction:column; gap:14px; align-items:center; width:100%; max-width:3210px; min-width:220px; margin:auto; background:#f8f9fa; border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,0.10); padding:12px 34px; box-sizing:border-box;">
+              <label style="width:100%; text-align:left; color:#555; font-size:1.01rem; margin-bottom:6px;">
+                Usuário:
+                <input type="text" name="usuario" id="usuario" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px;">
+              </label>
+              <label style="width:100%; text-align:left; color:#555; font-size:1.01rem; margin-bottom:6px;">
+                Senha:
+                <input type="password" name="senha" id="senha" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #e0e7ff; font-size:1.08rem; margin-top:4px;">
+              </label>
+              <button type="submit" class="main-btn" style="margin-top:8px; background:#2ecc40; color:#fff; font-size:1.07rem; padding:10px 0; border-radius:7px; box-shadow:0 2px 8px rgba(46,204,64,0.10); width:100%; max-width:170px; text-align:center; display:flex; align-items:center; justify-content:center;">Entrar</button>
+            </form>
+            <div id="status" style="margin-top:18px; color:#333; font-size:1.08rem;"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      // Integração do formulário de login com backend
+      document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const usuario = document.getElementById('usuario').value;
+        const senha = document.getElementById('senha').value;
+        const statusDiv = document.getElementById('status');
+        statusDiv.textContent = 'Verificando...';
+        try {
+          const resp = await fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ usuario, senha })
+          });
+          const data = await resp.json();
+          if (resp.ok && data.success) {
+            statusDiv.textContent = 'Login realizado! Redirecionando...';
+            setTimeout(() => {
+              window.location.href = 'paginainicial.html';
+            }, 900);
+          } else {
+            statusDiv.textContent = data.message || 'Usuário ou senha inválidos.';
+          }
+        } catch (err) {
+          statusDiv.textContent = 'Erro ao conectar ao servidor.';
+        }
+      });
+    </script>
+</body>
+</html>
